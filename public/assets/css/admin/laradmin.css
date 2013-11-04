@@ -1,0 +1,12 @@
+body {
+  font: 400 12px 'Open Sans',HelveticaNeue,Helvetica,Arial;
+  min-height: 100%;
+  color: #707070;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+#content.container {
+  margin-left: 0;
+  max-width: 2000px;
+}
