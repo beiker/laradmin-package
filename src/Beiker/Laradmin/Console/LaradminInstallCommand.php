@@ -47,7 +47,7 @@ class LaradminInstallCommand extends Command {
     if ($this->option('database'))
     {
       $this->info('Creating Tables...');
-      $cmd = array('--bench' => 'beiker/laradmin');
+      $cmd = array('--package' => 'beiker/laradmin');
 
       if ($env = $this->option('envi'))
       {
@@ -64,18 +64,17 @@ class LaradminInstallCommand extends Command {
         $cmd['--env'] = $env;
       }
 
-      // $this->line($cmd);
       $this->call('db:seed', $cmd);
     }
 
     $this->line('Publishing config files...');
-    Cmd::call("config:publish", ["package" => "beiker/laradmin",  "--path" => "workbench/beiker/laradmin/src/config"]);
+    Cmd::call("config:publish", ["package" => "beiker/laradmin"]); //,  "--path" => "workbench/beiker/laradmin/src/config"
 
     $this->line('Publishing "en" and "es" lang files...');
     $this->createLangFiles();
 
     $this->line('Publishing assets...');
-    Cmd::call('asset:publish', ['package' => 'beiker/laradmin', '--bench' => 'beiker/laradmin']);
+    Cmd::call('asset:publish', ['package' => 'beiker/laradmin']); //, '--bench' => 'beiker/laradmin'
 
     // Si se especifico la opcion --examples entonces inserta los privilegios de los
     // ejemplos, se los asigna al usuario admin y crea los archivos(controller, views).
