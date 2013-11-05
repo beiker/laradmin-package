@@ -26,9 +26,9 @@ return array(
     // });
 
     // o con un controller, para esto tendrias que crear el controller en el
-    // directorio de siempre: app/controllers
+    // directorio de siempre: app/controllers/
 
-    // admin/reports
+    // admin/examples
     // Route::controller('examples', 'ExamplesController');
 
     // Todo depende de ti :)
