@@ -33,12 +33,15 @@ Una vez realizado lo anterior, para poder publicar los assets(css, js, imagenes 
 (config, lang, routes) y los archivos de idiomas, Laradmin cuenta con un comando para realizar todo esto de un solo golpe, solo ejecuta en la Terminal 
 el comando: `php artisan laradmin:install`
 
-###Opciones del Commando laradmin:install
+###Opciones del Comando laradmin:install
 
+
+######--database
 `php artisan laradmin:install --database`: Con la opcion `--database` se crearan las tablas necesarias para el funcionamiento
 de Laradmin y tambien ejecutara los seeders para insertar los privilegios principales y un usuario administrador por default. 
 <b>NOTA: Antes de ejectuar el comando con esta opcion tienes que especificar la base de datos a utilizar en el archivo `app/config/database.php` </b>
 
+#####--envi
 `php artisan laradmin:install --envi`: La opcion `--envi` sirve para en caso de que estes usando algun ambiente.
 Ejemplo: `php artisan laradmin:install --database --envi="dev"`
 
@@ -71,6 +74,11 @@ o si quieres acceder mediante el controller entonces descomenta la linea:
 
 ```Route::controller('examples', 'ExamplesController');```
 
-Si al intentar acceder a los ejemplos te sale el error `ExamplesController Not Found` entonces ejecutar en la Terminal:
+Si al intentar acceder a los ejemplos te sale el error `ExamplesController Not Found` entonces ejecuta en la Terminal:
 
 `composer.phar dumpautoload -o`
+
+##USO
+
+
+###Routes
