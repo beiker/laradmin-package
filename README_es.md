@@ -27,6 +27,30 @@ En el mismo archivo donde agregaste el service provider, en el array `aliases` a
 `'Laradmin' => 'Beiker\Laradmin\Facades\Laradmin',`
 
 
+### Base de Datos (Migraciones y Seeds)
+
+Laradmin necesita de cuatro tablas para su funcionamiento las cuales son:
+
+- users
+- privileges
+- privilege_user
+- users_logs
+
+Las estructuras de estas tablas se encuentras en migraciones dentro del paquete de Laradmin. Antes de ejecutar las migraciones
+tienes que especificar la base de datos a usar en la app, esto se hace en el archivo `app/config/database.php` o en la 
+configuracion del ambiente si es que estas usando alguna.
+
+Cabe recalcar que Laradmin cuenta con un comando que crea las migraciones y los seeds de los privilegios, si te interesa
+hacerlo mediante el comando entonces da click [AQUI](#--database).
+
+Si deseas crear manualmente las migraciones entonces ejecuta en la Terminal el comando: 
+`php artisan migrate -package=beiker/laradmin`
+
+
+Y para ejecutar los seeds de los privilegios principales y del usuario admin por default de Laradmin entonces ejecuta:
+`php artisan db:seed --class=LaradminDatabaseSeeder`
+
+
 ##Publicando Assets, Archivos de Configuracion, Idiomas.
 
 Una vez realizado lo anterior, para poder publicar los assets(css, js, imagenes etc), los archivos de configuracion
@@ -39,7 +63,7 @@ el comando: `php artisan laradmin:install`
 ######--database
 `php artisan laradmin:install --database`: Con la opcion `--database` se crearan las tablas necesarias para el funcionamiento
 de Laradmin y tambien ejecutara los seeders para insertar los privilegios principales y un usuario administrador por default. 
-<b>NOTA: Antes de ejectuar el comando con esta opcion tienes que especificar la base de datos a utilizar en el archivo `app/config/database.php` </b>
+> <b>NOTA: Antes de ejectuar el comando con esta opcion tienes que especificar la base de datos a utilizar en el archivo `app/config/database.php` </b>
 
 #####--envi
 `php artisan laradmin:install --envi`: La opcion `--envi` sirve para en caso de que estes usando algun ambiente.
@@ -57,7 +81,7 @@ Esto creara los siguientes archivos:
 Controller: `app/controllers/admin/ExamplesController.php`<br />
 Views: `app/views/admin/examples/basic.blade.php` y `app/views/admin/examples/advanced.blade.php`
 
-Para poder acceder a los ejemplos mediante el navegador antes tienes que descomentar las siguientes lineas del 
+Para poder acceder a los ejemplos mediante el navegador tienes que descomentar las siguientes lineas del 
 archivo `app/routes.php`
 
 
@@ -70,7 +94,7 @@ Route::get('examples', function()
 ```
 
 
-o si quieres acceder mediante el controller entonces descomenta la linea:
+o si quieres acceder a los ejemplos mediante el controller entonces descomenta la linea:
 
 ```Route::controller('examples', 'ExamplesController');```
 
@@ -83,7 +107,7 @@ Si al intentar acceder a los ejemplos te sale el error `ExamplesController Not F
 
 ###Routes
 
-Los routes al igual que en otra aplicacion en laravel son colocados dentro del archivo `app/routes.php`, pero para que sean
+Los routes al igual que en otra aplicacion en Laravel son colocados dentro del archivo `app/routes.php`, pero para que sean
 tomados en cuenta dentro de los routes de Laradmin tienes que utilizar el metodo `Laradmin::routes()` y pasarle un closure 
 con los routes que desees. Ejemplo
 
@@ -149,3 +173,11 @@ en el directorio `app/lang`<br>
 usar, ten en cuenta que si agregas nuevos idiomas tienes que agregar sus archivos en `app/lang`. La primera posición del array es la que 
 se cargará por default así que si el array es: ```['es', 'en']``` entonces el español sera cargado por default cuando
 en la url no se especifique un idioma.
+
+### Agregar Privilegios
+
+
+### Agregar Usuarios
+
+
+
