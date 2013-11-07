@@ -27,7 +27,7 @@ Laradmin::routes(function()
   // directorio de siempre: app/controllers
 
   // admin/examples
-  Route::controller('examples', 'ExamplesController');
+  // Route::controller('examples', 'ExamplesController');
 
   // Todo depende de ti :)
 });

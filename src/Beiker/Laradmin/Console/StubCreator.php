@@ -104,9 +104,17 @@ class StubCreator {
     // Verifica si existe el archivo app/routes.php
     if ($this->filesys->isFile("{$pathDest}/routes.php"))
     {
-      $content = $this->filesys->get(__DIR__.'/Stubs/routes.stub');
+      $routesContent = $this->filesys->get("{$pathDest}/routes.php");
 
-      $this->filesys->append("{$pathDest}/routes.php", $content);
+      if ( ! strpos($routesContent, "Laradmin::routes(function()"))
+      {
+        $content = $this->filesys->get(__DIR__.'/Stubs/routes.stub');
+        $this->filesys->append("{$pathDest}/routes.php", $content);
+
+        return true;
+      }
+
+      return false;
     }
   }
 
