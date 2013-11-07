@@ -136,7 +136,7 @@ class LaradminInstallCommand extends Command {
   {
     $pathDest = $this->laravel['path.base'].'/app';
 
-    $this->creator->routes($pathDest);
+    return $this->creator->routes($pathDest);
   }
 
   /**
