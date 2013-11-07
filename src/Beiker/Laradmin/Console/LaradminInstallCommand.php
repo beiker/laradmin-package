@@ -84,7 +84,7 @@ class LaradminInstallCommand extends Command {
   {
     if ($this->createRoutes())
     {
-      $this->line('Publishing routes...');
+      $this->line('Publishing routes in app/routes.php');
     }
   }
 
