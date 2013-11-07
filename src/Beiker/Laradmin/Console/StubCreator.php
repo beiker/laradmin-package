@@ -64,7 +64,7 @@ class StubCreator {
   }
 
   /**
-   * Crea el ejemplo Reports.
+   * Crea los ejemplos.
    *
    * @param  string $pathDest
    * @return void

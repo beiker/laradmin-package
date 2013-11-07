@@ -47,7 +47,7 @@ class Laradmin {
   {
     return array_merge([
       'packages/beiker/laradmin/assets/libs/bootstrap/css/bootstrap.min.css',
-      // 'packages/beiker/laradmin/assets/libs/bootstrap/css/bootstrap-theme.min.css',
+      'packages/beiker/laradmin/assets/libs/bootstrap/css/bootstrap-theme.min.css',
       'packages/beiker/laradmin/assets/libs/font-awesome/css/font-awesome.min.css',
       'packages/beiker/laradmin/assets/libs/jquery-ui/css/jquery-ui-1.9.2.custom.min.css',
       'packages/beiker/laradmin/assets/libs/jquery-noty/css/jquery.noty.css',

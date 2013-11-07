@@ -30,6 +30,7 @@
         <div class="clear">&nbsp</div>
       </div><!--/panel-heading -->
       <div class="panel-body">
+        Tables <a href="http://getbootstrap.com/css/#tables">Bootstrap 3 Tables</a>
       </div><!--/panel-body -->
 
       <div class="table-responsive">
