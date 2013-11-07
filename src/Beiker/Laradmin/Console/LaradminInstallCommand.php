@@ -43,11 +43,12 @@ class LaradminInstallCommand extends Command {
 	{
 		$this->line('Installing...');
 
-    // $this->database();
+    $this->database();
     $this->routes();
-    // $this->config();
-    // $this->lang();
-    // $this->assets();
+    $this->config();
+    $this->lang();
+    $this->assets();
+    $this->examples();
 
     $this->info('Complete :) !!!');
 	}
