@@ -1,4 +1,4 @@
-<?php
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,24 +14,20 @@
 | si quieres tener las ruta "admin/examples" se  podria hacer asi:
 |
 */
-return array(
+Laradmin::routes(function()
+{
+  // admin/examples
+  // Route::get('examples', function()
+  // {
+  //   $title = 'Basic Example';
+  //   return View::make('admin.examples.basic')->with(compact('title'));
+  // });
 
-  'routes' => function ()
-  {
-    // admin/examples
-    // Route::get('examples', function()
-    // {
-    //   $title = 'Basic Example';
-    //   return View::make('admin.examples.basic')->with(compact('title'));
-    // });
+  // o con un controller, para esto tendrias que crear el controller en el
+  // directorio de siempre: app/controllers
 
-    // o con un controller, para esto tendrias que crear el controller en el
-    // directorio de siempre: app/controllers/
+  // admin/examples
+  Route::controller('examples', 'ExamplesController');
 
-    // admin/examples
-    // Route::controller('examples', 'ExamplesController');
-
-    // Todo depende de ti :)
-  }
-
-);
+  // Todo depende de ti :)
+});

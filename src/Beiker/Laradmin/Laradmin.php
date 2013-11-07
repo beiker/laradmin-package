@@ -16,6 +16,8 @@ class Laradmin {
    */
   protected $scripts = array();
 
+  protected $routes;
+
   /**
    * Asgina los css.
    *
@@ -152,6 +154,29 @@ class Laradmin {
   public function showAlert($config = array())
   {
     return \Util::alert($config);
+  }
+
+  /**
+   * Asigna/Inicializa los routes del usuario y de laradmin.
+   *
+   * @param  Closure $fn
+   * @return void
+   */
+  public function routes(\Closure $fn)
+  {
+    $this->routes = $fn;
+
+    include __DIR__.'/../../routes.php';
+  }
+
+  /**
+   * Obtiene los routes del usuario.
+   *
+   * @return Closure
+   */
+  public function getRoutes()
+  {
+    return $this->routes;
   }
 
 }

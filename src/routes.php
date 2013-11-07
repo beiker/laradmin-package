@@ -1,5 +1,8 @@
 <?php
-
+Route::get('/', function()
+{
+  return 'Hola';
+});
 /*
 |--------------------------------------------------------------------------
 | Laradmin Application Routes
@@ -84,7 +87,6 @@ Route::group(array('prefix' => "admin/{$locale}"), function() use ($locale)
       'getDelete' => 'users.delete',
     ));
 
-    call_user_func(Config::get('laradmin::routes.routes'));
-
+    call_user_func(Laradmin::getRoutes());
   });
 });

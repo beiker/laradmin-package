@@ -22,7 +22,6 @@ class LaradminServiceProvider extends ServiceProvider {
 	{
 		$this->package('beiker/laradmin');
 
-    include __DIR__.'/../../routes.php';
     include __DIR__.'/../../filters.php';
     include __DIR__.'/../../services/helpers/Macros.php';
 	}

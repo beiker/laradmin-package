@@ -43,6 +43,17 @@ class LaradminInstallCommand extends Command {
 	{
 		$this->line('Installing...');
 
+    // $this->database();
+    $this->routes();
+    // $this->config();
+    // $this->lang();
+    // $this->assets();
+
+    $this->info('Complete :) !!!');
+	}
+
+  private function database()
+  {
     // Si la option --database se especifico entonces crea las tablas y seeds.
     if ($this->option('database'))
     {
@@ -66,16 +77,34 @@ class LaradminInstallCommand extends Command {
 
       $this->call('db:seed', $cmd);
     }
+  }
 
+  private function routes()
+  {
+    $this->line('Publishing routes...');
+    $this->createRoutes();
+  }
+
+  private function config()
+  {
     $this->line('Publishing config files...');
     Cmd::call("config:publish", ["package" => "beiker/laradmin"]); //,  "--path" => "workbench/beiker/laradmin/src/config"
+  }
 
+  private function lang()
+  {
     $this->line('Publishing "en" and "es" lang files...');
     $this->createLangFiles();
+  }
 
+  private function assets()
+  {
     $this->line('Publishing assets...');
     Cmd::call('asset:publish', ['package' => 'beiker/laradmin']); //, '--bench' => 'beiker/laradmin'
+  }
 
+  private function examples()
+  {
     // Si se especifico la opcion --examples entonces inserta los privilegios de los
     // ejemplos, se los asigna al usuario admin y crea los archivos(controller, views).
     if ($this->option('examples'))
@@ -93,9 +122,19 @@ class LaradminInstallCommand extends Command {
       $this->info('Publishing Examples Files...');
       $this->createExamples();
     }
+  }
 
-    $this->info('Complete :) !!!');
-	}
+  /**
+   * Copia el contenido del stub routes a app/routes.php
+   *
+   * @return void
+   */
+  public function createRoutes()
+  {
+    $pathDest = $this->laravel['path.base'].'/app';
+
+    $this->creator->routes($pathDest);
+  }
 
   /**
    * Copia los archivos de lang.

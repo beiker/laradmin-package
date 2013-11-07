@@ -93,4 +93,21 @@ class StubCreator {
     }
   }
 
+  /**
+   * Copea el stub de routes al archivo app/routes.php
+   *
+   * @param  string $pathDest
+   * @return void
+   */
+  public function routes($pathDest)
+  {
+    // Verifica si existe el archivo app/routes.php
+    if ($this->filesys->isFile("{$pathDest}/routes.php"))
+    {
+      $content = $this->filesys->get(__DIR__.'/Stubs/routes.stub');
+
+      $this->filesys->append("{$pathDest}/routes.php", $content);
+    }
+  }
+
 }
