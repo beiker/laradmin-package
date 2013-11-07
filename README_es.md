@@ -30,7 +30,7 @@ En el mismo archivo donde agregaste el service provider, en el array `aliases` a
 ##Publicando Assets, Archivos de Configuracion, Idiomas.
 
 Una vez realizado lo anterior, para poder publicar los assets(css, js, imagenes etc), los archivos de configuracion
-(config, lang, routes) y los archivos de idiomas, Laradmin cuenta con un comando para realizar todo esto de un solo golpe, solo ejecuta en la Terminal 
+(config, lang) y los archivos de idiomas, Laradmin cuenta con un comando para realizar todo esto de un solo golpe, solo ejecuta en la Terminal 
 el comando: `php artisan laradmin:install`
 
 ###Opciones del Comando laradmin:install
@@ -58,7 +58,7 @@ Controller: `app/controllers/admin/ExamplesController.php`<br />
 Views: `app/views/admin/examples/basic.blade.php` y `app/views/admin/examples/advanced.blade.php`
 
 Para poder acceder a los ejemplos mediante el navegador antes tienes que descomentar las siguientes lineas del 
-archivo `app/config/packages/beiker/laradmin/routes.php`
+archivo `app/routes.php`
 
 
 ```
@@ -82,3 +82,70 @@ Si al intentar acceder a los ejemplos te sale el error `ExamplesController Not F
 
 
 ###Routes
+
+Los routes al igual que en otra aplicacion en laravel son colocados dentro del archivo `app/routes.php`, pero para que sean
+tomados en cuenta dentro de los routes de Laradmin tienes que utilizar el metodo `Laradmin::routes()` y pasarle un closure 
+con los routes que desees. Ejemplo
+
+
+```
+// file app/routes.php
+
+<?php
+
+Laradmin::routes(function() 
+{
+  // admin/report o admin/{lang}/report
+  Route::get('report', function() 
+  {
+    return 'Hi Report !!!';
+  });
+  
+  Route::controller('stuff', 'StuffController');
+});
+
+```
+Ten en cuenta que a los routes que agregues se le añadira el prefijo `admin/{lang}` asi que por ejemplo para el route `report`
+la url seria: `tuproyecto.com/admin/report` o si esta algun lang seleccionado seria `tuproyecto.com/admin/es/report`
+
+En el caso de usar controllers restful/resources todo seria igual, tendrias que crear el archivo en `app/controllers` y declarar tus metodos
+en él.
+
+###Configuración
+
+Laradmin cuenta por ahora con unicamente dos archivos de configuracion muy basicas los cuales se encuentran en
+`app/config/packages/beiker/laradmin/`. A continuación explicare ambos archivos.
+
+######Archivo config.php
+
+En este archivo se le pueden especificar cuatro opciones de configuracion: <br /> 
+
+- `name` Esta opcion es el text que aparecera en el navbar header o la barra superior del template.
+- `avatarpath` Esta opcion indica la ruta donde se almacenaran las imagenes que se suben al crear un nuevo usuario.
+- `error404` Especifica la vista que mostrará para el error 404 pagina no encontrada.
+- `errormodel` Esta otra indica la vista que se mostrará para el error `Model not found`, lanzado por los metodos
+`findOrFail` etc.
+
+######Archivo lang.php
+
+Este archivo esta relacionado con los idiomas a implementar en Laradmin, por default viene con Ingles y Español
+pero se pueden agregar más o quitar, los archivos lang de Laradmin se encuentran en el directorio `app/lang/{en|es}/laradmin/`
+los cuales son creados al momento de ejecutar el commando `php artisan laradmin:install`, dentro de este directorio
+se encuentran dos archivos: 
+
+- `menu.php` el cual contiene las traducciones para los privilegios.
+- `messages.php` el cual tiene las traduccion de textos en general de Laradmin.
+
+Sientete libre para agregar/quitar/cambiar las traducciones de ambos archivos. En cuanto a las opciones de configuracion
+del archivo `lang.php` son las siguientes:
+
+- `default` Esta opcion le indica a Laradmin si tomara los archivos de traduccion que vienen en el paquete o los que estan
+en el directorio `app/lang`<br>
+      
+      `true`: Tomara en cuenta las traducciones dentro del Paquete.<br>
+      `false`: Tomara en cuenta las traducciones en `app/lang`.<br>
+
+- `valid_langs` Este array contiene los idiomas que seran usados en Laradmin. Aqui es donde tienes que poner los idiomas a
+usar, ten en cuenta que si agregas nuevos idiomas tienes que agregar sus archivos en `app/lang`. La primera posición del array es la que 
+se cargará por default así que si el array es: ```['es', 'en']``` entonces el español sera cargado por default cuando
+en la url no se especifique un idioma.
