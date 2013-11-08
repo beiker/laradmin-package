@@ -11,7 +11,7 @@ class Conf
 {
 
   /**
-   *
+   * Obtiene el valor de la configuracion name.
    *
    * @return string
    */
@@ -89,6 +89,26 @@ class Conf
     }
 
     return $view;
+  }
+
+  /**
+   * Obtiene la vista a utilizar para el contenido del dashboard.
+   *
+   * @return string
+   */
+  public static function viewDashboard()
+  {
+    return Config::get('laradmin::config.dashboard');
+  }
+
+  /**
+   * Obtiene la vista a utilizar para el contenido del dashboard.
+   *
+   * @return string
+   */
+  public static function dashboardComposerClass()
+  {
+    return Config::get('laradmin::config.dashboardComposerClass');
   }
 
 }

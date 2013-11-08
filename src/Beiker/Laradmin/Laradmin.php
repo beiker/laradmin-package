@@ -16,6 +16,11 @@ class Laradmin {
    */
   protected $scripts = array();
 
+  /**
+   * Routes del usuario.
+   *
+   * @var Closure
+   */
   protected $routes;
 
   /**

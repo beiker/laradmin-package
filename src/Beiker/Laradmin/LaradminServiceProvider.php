@@ -24,6 +24,12 @@ class LaradminServiceProvider extends ServiceProvider {
 
     include __DIR__.'/../../filters.php';
     include __DIR__.'/../../services/helpers/Macros.php';
+
+    // View composer para el dashboard.
+    if (\Conf::dashboardComposerClass())
+    {
+      \View::composer(\Conf::viewDashboard(), \Conf::dashboardComposerClass());
+    }
 	}
 
 	/**

@@ -14,10 +14,10 @@ class ViewServiceProvider extends ServiceProvider {
     // View composer menu.
     \View::composer('laradmin::admin.master', function($view)
     {
-      $menu = \App::make('Beiker\Laradmin\Privilege\MenuConstructor');
-
       if (\Auth::check())
       {
+        $menu = \App::make('Beiker\Laradmin\Privilege\MenuConstructor');
+
         $view->nest('menu', 'laradmin::admin.general.menu', compact('menu'));
       }
       else
