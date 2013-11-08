@@ -1,11 +1,13 @@
 {
     "name": "beiker/laradmin",
     "description": "Administration Panel for Laravel 4",
+    "keywords": ["laravel","admin","laradmin"],
     "license": "BSD-2-Clause",
     "authors": [
         {
             "name": "Beiker",
-            "email": "oscar.alcantars@gmail.com"
+            "email": "oscar.alcantars@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {

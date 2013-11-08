@@ -59,6 +59,10 @@ class Privilege extends Eloquent {
 
   public function setUrlActionAttribute($value)
   {
+    if (ends_with($value, '/'))
+    {
+      $value = substr($value, 0, -1);
+    }
     $this->attributes['url_action'] = strtolower($value);
   }
 
