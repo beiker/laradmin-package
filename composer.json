@@ -2,10 +2,11 @@
     "name": "beiker/laradmin",
     "description": "Administration Panel for Laravel 4",
     "keywords": ["laravel","admin","laradmin"],
-    "license": "BSD-2-Clause",
+    "homepage": "http://github.com/beiker/laradmin-package",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Beiker",
+            "name": "Oscar Alcantar",
             "email": "oscar.alcantars@gmail.com",
             "role": "Developer"
         }
