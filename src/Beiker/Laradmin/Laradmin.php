@@ -52,15 +52,7 @@ class Laradmin {
    */
   public function getStyles()
   {
-    return array_merge([
-      'packages/beiker/laradmin/assets/libs/bootstrap/css/bootstrap.min.css',
-      'packages/beiker/laradmin/assets/libs/font-awesome/css/font-awesome.min.css',
-      'packages/beiker/laradmin/assets/libs/jquery-ui/css/jquery-ui-1.9.2.custom.min.css',
-      'packages/beiker/laradmin/assets/libs/jquery-noty/css/jquery.noty.css',
-      'packages/beiker/laradmin/assets/libs/jquery-uniform/css/uniform.default.min.css',
-      'packages/beiker/laradmin/assets/css/admin/laradmin.css',
-      'packages/beiker/laradmin/assets/css/admin/menu.css',
-    ], $this->styles);
+    return array_merge(\Config::get('laradmin::assets.styles'), $this->styles);
   }
 
   /**
@@ -70,15 +62,7 @@ class Laradmin {
    */
   public function getScripts()
   {
-    return array_merge([
-      'packages/beiker/laradmin/assets/libs/jquery/jquery-2.0.0.min.js',
-      'packages/beiker/laradmin/assets/libs/jquery-ui/scripts/jquery-ui-1.9.2.custom.min.js',
-      'packages/beiker/laradmin/assets/libs/bootstrap/scripts/bootstrap.min.js',
-      'packages/beiker/laradmin/assets/libs/jquery-noty/scripts/jquery.noty.js',
-      'packages/beiker/laradmin/assets/libs/jquery-uniform/scripts/jquery.uniform.min.js',
-      'packages/beiker/laradmin/assets/scripts/admin/laradmin.js',
-      'packages/beiker/laradmin/assets/scripts/admin/menu.js',
-    ], $this->scripts);
+    return array_merge(\Config::get('laradmin::assets.scripts'), $this->scripts);
   }
 
   /**

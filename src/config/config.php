@@ -2,7 +2,7 @@
 
 return array(
 
-  // Titulo principal a mostrar para el panel administrativo.
+  // Titulo principal a mostrar en el header del panel.
   'name' => 'LARADMIN',
 
   // Ruta donde se guardara el avatar.
@@ -32,8 +32,3 @@ return array(
   // Posibles valores: false || ComposerClass
   'dashboardComposerClass' => 'Beiker\Laradmin\View\Composers\DashboardComposer',
 );
-
-View::creator('view', function($view)
-{
-  $view->with('var', $value);
-});
