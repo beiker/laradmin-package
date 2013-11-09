@@ -38,10 +38,10 @@ Laradmin necesita de cuatro tablas para su funcionamiento las cuales son:
 
 Las estructuras de estas tablas se encuentras en migraciones dentro del paquete de Laradmin. Antes de ejecutar las migraciones
 tienes que especificar la base de datos a usar en la app, esto se hace en el archivo `app/config/database.php` o en la 
-configuracion del ambiente si es que estas usando alguna.
+configuracion del ambiente si es que estas usando uno.
 
-Cabe recalcar que Laradmin cuenta con un comando que crea las migraciones y los seeds de los privilegios, si te interesa
-hacerlo mediante el comando entonces da click [AQUI](#--database).
+Cabe recalcar que Laradmin cuenta con un comando que crea las migraciones y los seeds de los privilegios automaticamente,
+si te interesa hacerlo mediante el comando entonces da click [AQUI](#--database).
 
 Si deseas crear manualmente las migraciones entonces ejecuta en la Terminal el comando: 
 `php artisan migrate -package=beiker/laradmin`
@@ -53,8 +53,8 @@ Y para ejecutar los seeds de los privilegios principales y del usuario admin por
 
 ##Publicando Assets, Archivos de Configuracion, Idiomas.
 
-Una vez realizado lo anterior, para poder publicar los assets(css, js, imagenes etc), los archivos de configuracion
-(config, lang) y los archivos de idiomas, Laradmin cuenta con un comando para realizar todo esto de un solo golpe, solo ejecuta en la Terminal 
+Para poder publicar los assets(css, js, imagenes etc), los archivos de configuracion
+(config, lang, assets) y los archivos de idiomas, Laradmin cuenta con un comando para realizar todo esto de un solo golpe, solo ejecuta en la Terminal 
 el comando: `php artisan laradmin:install`
 
 ###Opciones del Comando laradmin:install
@@ -137,20 +137,26 @@ en él.
 
 ###Configuración
 
-Laradmin cuenta por ahora con unicamente dos archivos de configuracion muy basicas los cuales se encuentran en
-`app/config/packages/beiker/laradmin/`. A continuación explicare ambos archivos.
+Laradmin cuenta por ahora con unicamente tres archivos de configuracion muy basicos los cuales se encuentran en
+`app/config/packages/beiker/laradmin/`. A continuación explicare los archivos de configuración.
 
-######Archivo config.php
+######config.php
 
 En este archivo se le pueden especificar cuatro opciones de configuracion: <br /> 
 
 - `name` Esta opcion es el text que aparecera en el navbar header o la barra superior del template.
 - `avatarpath` Esta opcion indica la ruta donde se almacenaran las imagenes que se suben al crear un nuevo usuario.
+<b>Nota: En dado caso que al querer crear un nuevo usuario con una imagen desde el formulario te marque error de permisos/escritura,
+dale permisos de escritura a la carpeta que especificaste en esta opcion.</b>
 - `error404` Especifica la vista que mostrará para el error 404 pagina no encontrada.
 - `errormodel` Esta otra indica la vista que se mostrará para el error `Model not found`, lanzado por los metodos
 `findOrFail` etc.
+- `dashboard` Esta opcion indica la vista que sera utilizada para el contenido del dashboard.
+- `dashboardComposerClass` Esta opcion es necesaria en caso que requieras pasarle datos a la vista especificada en la opcion `dashboard`. Aqui
+debes especificar el nombre de la clase composer que servira para construir la vista.
+Para mas info acerca de las vistas composer [AQUI](http://laravel.com/docs/responses#view-composers)
 
-######Archivo lang.php
+######lang.php
 
 Este archivo esta relacionado con los idiomas a implementar en Laradmin, por default viene con Ingles y Español
 pero se pueden agregar más o quitar, los archivos lang de Laradmin se encuentran en el directorio `app/lang/{en|es}/laradmin/`
@@ -173,6 +179,14 @@ en el directorio `app/lang`<br>
 usar, ten en cuenta que si agregas nuevos idiomas tienes que agregar sus archivos en `app/lang`. La primera posición del array es la que 
 se cargará por default así que si el array es: ```['es', 'en']``` entonces el español sera cargado por default cuando
 en la url no se especifique un idioma.
+
+######assets.php
+
+Este archivo de configuracion almacena los paths de los css y js que son usados por default en Laradmin, aquí es donde
+puedes agregar styles y scripts que quieres que sean cargados en todos los routes de Laradmin. Te recomiendo que no 
+quites los css y js que vienen por default ya que pueden afectar el comportamiento del javascript o el estilo de los
+componentes html.
+
 
 ### Agregar Privilegios
 
