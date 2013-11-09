@@ -147,8 +147,8 @@ Laradmin::routes(function()
 });
 
 ```
-Ten en cuenta que a los routes que agregues se le añadira el prefijo `admin/{lang}` asi que por ejemplo para el route `report`
-la url seria: `tuproyecto.com/admin/report` o si esta algun lang seleccionado seria `tuproyecto.com/admin/es/report`
+Ten en cuenta que a los routes que agregues llevaran el prefijo `admin/{lang}` asi que por ejemplo para el route `report`
+la url seria: `localhost/admin/report` o si esta algun lang seleccionado seria `localhost/admin/es/report`
 
 En el caso de usar controllers restful/resources todo seria igual, tendrias que crear el archivo en `app/controllers` y declarar tus metodos
 en él.
