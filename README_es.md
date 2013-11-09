@@ -44,7 +44,7 @@ Cabe recalcar que Laradmin cuenta con un comando que crea las migraciones y los 
 si te interesa hacerlo mediante el comando entonces da click [AQUI](#--database).
 
 Si deseas crear manualmente las migraciones entonces ejecuta en la Terminal el comando: 
-`php artisan migrate -package=beiker/laradmin`
+`php artisan migrate --package=beiker/laradmin`
 
 
 Y para ejecutar los seeds de los privilegios principales y del usuario admin por default de Laradmin entonces ejecuta:
@@ -188,10 +188,78 @@ quites los css y js que vienen por default ya que pueden afectar el comportamien
 componentes html.
 
 
-### Agregar Privilegios
+### Privilegios
+
+La idea de implementar los privilegios en Laradmin y no mediante roles, grupos etc, es hacerlo un poco mas simple. Cada 
+privilegio es una accion como por ejemplo mostrar el listado de usuarios, eliminar algun recurso, desactivar, 
+ver un reporte etc, y a esos privilegios unicamente podran acceder aquellos usuarios que tengan ese  privilegio asignado.
+
+En la seccion de Privilegios podras encontrar un listado de los privilegios existentes asi como las opciones de editar,
+eliminar, desactivar, activar.
+
+Para crear un privilegio esto se hace mediante el formulario de crear privilegio que puede ser accedido mediante el menu (Privilegios > Nuevo).
+
+A continuacion explicare los campos del formulario para crear un privilegio:
+
+######Nombre
+El campo `nombre` es requerido. Este es el nombre a desplegar en el menu o en algun boton de privilegio (explicado mas adelante).
+
+######Url accion
+El campo `url accion` es requerido. En este campo debes colocar el route al que accedera.
+
+######Icon
+El campo `icon` no es obligatorio. Los iconos que puedes usar se encuentra en [FontAwesome](http://fortawesome.github.io/Font-Awesome/icons/), 
+unicamente debes de colocar el texto despues de `fa-` por ejemplo si el icono es `fa-comments` entonces debes poner `comments`.
+FontAwesome cuenta con otras clases que pueden ser utiles como `fa-fw` o las clases zoom `fa-2x`, si quieres usar alguna clase extra
+entonces colocalas despues del nombre del icon por ejemplo: `comments fa-2x fa-fw`
+
+######Mostrar en menu
+El campo `mostrar en menu` sirve para aquellos privilegios que quieres que se vean en el menu izquierdo. Por lo regular los
+privilegios que son mostrados en el menu son aquellos que muestran listados, formularios de creacion, reportes etc. Sientete
+libre de marcar esta opcion para los privilegios que tu quieras.
+
+######Target blank
+El campo `target blank` creo que es muy obvia esta opcion, lo que hace es abrir los privilegios en otra pestaña del navegador.
+
+######Lang file
+El campo `lang file` es util por si estas usando diferentes idiomas en Laradmin, el formato de este campo es `archivo.opcion`.El
+archivo debe existir en la ruta `app/lang/{lang}/laradmin/`. Por ejemplo si colocaste `miarchivo.reporte` y estas usando los lang
+`en` y `es` entonces debes crear el archivo `miarchivo.php` dentro de `app/lang/en/laradmin/` y `app/lang/es/laradmin/`.
+Para mas info acerca de localization en Laravel da click [AQUI](http://laravel.com/docs/localization#language-files)
+
+> Si quiere que laradmin tome en cuenta tus langs entonces en el archivo de configuracion `app/config/packages/beiker/laradmin/lang`
+la opcion `default` ponla como `false`
+
+######Usar lang por default
+El campo `usar lang por default` indica si el nombre a mostrar en el privilegio es el que esta ligado al campo `lang file`. Si esta
+opcion no es marcada entonces el nombre a mostrar del privilegio sera el campo `nombre`.
+
+######Privilegios
+El campo `privilegios` es el arbol de privilegios que existen en Laradmin, aqui tienes que seleccionar a que rama
+de los privilegios pertenece el privilegio que estas agregando.
 
 
-### Agregar Usuarios
+### Usuarios
+
+Esta seccion al igual que la de privilegios tiene un listado de los usuarios existentes los cuales podras editar, 
+eliminar, desactivar, activar y agregar.
+
+Agregar un nuevo usuario.
+
+El formulario para agregar un nuevo usuario es muy simple, requiere de datos que no son tan necesarios de explicar, el que
+si es necesario explicar es el campo `Privilegios`. Este campo muestra el arbol de los privilegios existentes en Laradmin,
+todos esos privilegios son los que ya vienen por default en Laradmin y tambien deberan aparecer aquellos que tu agregues.
+
+Es de suma importancia asignar los privilegios necesarios al usuario, asignarle privilegios que el usuario no requiere o que
+no debe tener acceso puede ser se de mucho riesgo. Solamente asegurate de asignarle los privilegios que ese usuario necesita para
+ello solamente tienes que marcarlos, si te equivocaste al momento de agregar el usuario, no te preocupes puedes modificarlo,
+solo ve al listado de usuario da click en el boton editar y modificalo.
 
 
+###Credenciales por Default
 
+Al momento de ejecutar los seeds para crear los privilegios por default de Laradmin tambien se crea un usuario administrador
+por default, el usuario y pass para que puedas acceder son los siguientes:
+
+`Usuario: admin`
+`Password: 123456`
