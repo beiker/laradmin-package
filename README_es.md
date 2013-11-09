@@ -18,6 +18,7 @@ LARADMIN
 - [assets.php](#assetsphp)
 - [Privilegios](#privilegios)
 - [Usuarios](#usuarios)
+- [Features](#features)
 
 
 ##Instalación
@@ -281,4 +282,12 @@ por default, el usuario y pass para que puedas acceder son los siguientes:
 
 `Usuario: admin`
 `Password: 123456`
+
+###Features
+
+- [Bootstrap 3](http://getbootstrap.com/)
+- [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+- [Jquery](http://jquery.com/)
+- [Uniform](http://uniformjs.com/)
+- [Noty](http://needim.github.io/noty/)
 
