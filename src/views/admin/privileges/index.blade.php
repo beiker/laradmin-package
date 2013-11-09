@@ -60,7 +60,7 @@
           <tbody>
             @foreach($privileges as $priv)
               <tr>
-                <td>{{ '<i class="icon-'.$priv->url_icon.'"></i> '.($priv->use_lang == 1 ? $priv->lang_name : $priv->name) }}</td>
+                <td>{{ '<i class="fa fa-'.$priv->url_icon.'"></i> '.($priv->use_lang == 1 ? $priv->lang_name : $priv->name) }}</td>
                 <td>{{ $priv->url_action }}</td>
                 <td>{{ $priv->show_menu == 1 ? '<i class="fa fa-check fa-2x"></i>' : '<i class="fa fa-times fa-2x"></i>' }}</td>
                 <td>{{ $priv->lang }}</td>

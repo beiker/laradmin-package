@@ -8,7 +8,7 @@
 
           {{ $menu->make() }}
 
-        </ul>
+        </ul><!--/nav -->
       </div> <!--/bs-sidebar -->
     </div><!--/col-md-12 -->
 

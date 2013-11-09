@@ -54,8 +54,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->user }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Perfil</a></li>
-                  <li class="divider"></li>
+                  <!-- <li><a href="#">Perfil</a></li>
+                  <li class="divider"></li> -->
                   <li><a href="{{ URL::to(Util::getUrlLang('admin/logout')) }}">{{ trans(Conf::langPath().'messages.admin-user-options-sign-out') }}</a></li>
                 </ul>
               </li>
