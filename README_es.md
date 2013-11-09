@@ -2,6 +2,24 @@ LARADMIN
 ================
 
 
+- [Instalacion](#instalación)
+- [Facade](#facade)
+- [Base de Datos](#base-de-datos-migraciones-y-seeds)
+- [Publicando Assets, Archivos de Configuracion, Idiomas](#publicando-assets-archivos-de-configuracion-idiomas)
+- [Opciones del Comando laradmin:install](#opciones-del-comando-laradmininstall)
+- [--database](#--database)
+- [--envi](#--envi)
+- [Instalando Ejemplos](#instalando-ejemplos)
+- [USO](#uso)
+- [Routes](#routes)
+- [Configuracion](#configuraci%C3%B3n)
+- [config.php](#configphp)
+- [lang.php](#langphp)
+- [assets.php](#assetsphp)
+- [Privilegios](#privilegios)
+- [Usuarios](#usuarios)
+
+
 ##Instalación
 
 
@@ -263,3 +281,4 @@ por default, el usuario y pass para que puedas acceder son los siguientes:
 
 `Usuario: admin`
 `Password: 123456`
+
