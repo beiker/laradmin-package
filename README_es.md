@@ -1,7 +1,7 @@
 LARADMIN
 ================
 
-
+- [Features](#features)
 - [Instalacion](#instalación)
 - [Facade](#facade)
 - [Base de Datos](#base-de-datos-migraciones-y-seeds)
@@ -18,8 +18,21 @@ LARADMIN
 - [assets.php](#assetsphp)
 - [Privilegios](#privilegios)
 - [Usuarios](#usuarios)
-- [Features](#features)
 
+
+###Features
+
+- [Bootstrap 3](http://getbootstrap.com/)
+- [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+- [Jquery](http://jquery.com/)
+- [Uniform](http://uniformjs.com/)
+- [Noty](http://needim.github.io/noty/)
+- Administracion de Privilegios
+- Administracion de Usuarios
+- Multi-idiomas
+- Personalizacion Error 404 (404 Not Found)
+- Personalizacion Error Modelo no encontrado (ModelNotFoundException)
+- Personalizacion Dashboard
 
 ##Instalación
 
@@ -282,12 +295,4 @@ por default, el usuario y pass para que puedas acceder son los siguientes:
 
 `Usuario: admin`
 `Password: 123456`
-
-###Features
-
-- [Bootstrap 3](http://getbootstrap.com/)
-- [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
-- [Jquery](http://jquery.com/)
-- [Uniform](http://uniformjs.com/)
-- [Noty](http://needim.github.io/noty/)
 
